@@ -13,6 +13,11 @@ describe("Archer DAO", function() {
     const accountToImpersonate = abiCoder.decode(['address'], sAt)[0];
     console.log(`admin account`, accountToImpersonate);
 
+    const personalAccMainnet = process.env['MAINNET_PUBLIC_KEY'];
+    // test against an account that was specified in hardhat.config.network.accounts array
+    await ethers.provider.send('hardhat_impersonateAccount', [personalAccMainnet]);
+    console.log('personal account impersonated');
+
     // need to fund the accountToImpersonate with some eth
     const minerAccount = '0x04668ec2f57cc15c381b461b9fedab5d451c8f7f';
     await ethers.provider.send('hardhat_impersonateAccount', [minerAccount]); // get some eth from a miner

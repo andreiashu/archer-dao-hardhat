@@ -23,7 +23,10 @@ module.exports = {
       chainId: 1,
       forking: {
         url: `https://eth-mainnet.alchemyapi.io/v2/${process.env['ALCHEMYIO_KEY']}`,
-        blockNumber: 11799831
+        blockNumber: 11799831,
+        accounts: [process.env['MAINNET_PRIV_KEY']],
+        live: false,
+        saveDeployments: true,
       }
     }
   }
